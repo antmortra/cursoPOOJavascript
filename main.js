@@ -1,40 +1,81 @@
-// Creacion de Objeto literal
-const natalia = {
-    name: "Natalia",
-    age: 20,
-    cursosAprobados: [
-        "Curso Definito de HTML y CSS",
-        "Curso Practico de HTML y CSS",
+class LearningPath {
+    constructor({
+        name,
+        cursos = [],
+    }) {
+        this.name = name;
+        this.cursos = cursos;
+    }
+
+}
+
+const escuelaWeb = new LearningPath({
+    name: "Escuela de Desarrollo Web",
+    cursos: [
+        "Curso Definitivo de HTML y CSS",
+        "Curso Práctico de HTML y CSS",
+        "Curso de Responsive Design",
     ],
-    aprobarCurso(nuevoCurso) { 
-        this.cursosAprobados.push(nuevoCurso);
-    },
-};
+});
+const escuelaData = new LearningPath({
+    name: "Escuela de Data Science",
+    cursos: [
+        "Curso básico de Python",
+        "Curso Avanzado de Python",
+        "Data Analitic Básico",
+    ],
+});
+const escuelaVgs = new LearningPath({
+    name: "Escuela de VideoJuegos",
+    cursos: [
+        "Curso Básico de Programación",
+        "Curso Básico de Udemy",
+        "Curso Avanzado de Udemy",
+    ],
+});
 
-// Hacer que Natalia apruebe otro curso
-natalia.cursosAprobados.push("Curso de responsive design");
-
-// Creacion de Objeto Prototipo
-
-function student(name, age, cursosAprobados) {
+class Student {
+  constructor({
+    name,
+    email,
+    username,
+    twitter = undefined,
+    instagram = undefined,
+    facebook = undefined,
+    approvedCourses = [],
+    learningPaths = [],
+  }) {
     this.name = name;
-    this.age = age;
-    this.cursosAprobados = cursosAprobados;
-  /*   this.aprobarCurso = function(nuevoCurso) {  // Esta es una forma de crear metodos la segunda la vamos a crear por fuera de la funcion
-        this.cursosAprobados.push(nuevoCurso);
-    } */
+    this.email = email;
+    this.username = username;
+    this.socialMedia = {
+      twitter,
+      instagram,
+      facebook,
+    };
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
 }
 
-student.prototype.aprobarCurso = function(nuevoCurso) {  // esta es la segunda opcion para crear metodos
-    this.cursosAprobados.push(nuevoCurso);
-}
+const juan2 = new Student({
+  name: "JuanDC",
+  username: "juandc",
+  email: "juanito@juanito.com",
+  twitter: "fjuandc",
+  learningPaths: [
+    escuelaWeb,
+    escuelaVgs,
+  ],
+});
 
-const juanita = new student(
-    "Juanita Alejandra",
-    15,
-    [
-        "Introduccion a los videojuegos",
-        "Gestion de personajes",
-    ]
-);
-
+const miguelito2 = new Student({
+  name: "Miguelito",
+  username: "migelitofeliz",
+  email: "miguelito@juanito.com",
+  instagram: "migelito_feliz",
+  learningPaths: [
+    escuelaWeb,
+    escuelaData,
+  ],
+});
